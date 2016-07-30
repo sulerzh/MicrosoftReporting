@@ -1,0 +1,65 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dvc="clr-namespace:Microsoft.Reporting.Windows.Common.Internal">
+  <Style TargetType="{x:Type dvc:LegendItem}">
+    <Setter Property="Control.IsTabStop" Value="true"/>
+    <Setter Property="ItemsControl.ItemsPanel">
+      <Setter.Value>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type dvc:LegendItem}">
+          <Grid>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="MouseOver"/>
+                <VisualState x:Name="Disabled"/>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="FocusStates">
+                <VisualState x:Name="Focused">
+                  <Storyboard>
+                    <ColorAnimation Duration="0" To="#20000000" Storyboard.TargetName="FocusBorder"
+                                    Storyboard.TargetProperty="(BorderBrush).(SolidBrush.Color)"/>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Unfocused"/>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="Border" Background="{TemplateBinding Control.Background}"
+                    BorderThickness="{TemplateBinding Control.BorderThickness}"
+                    Effect="{TemplateBinding dvc:LegendItem.ActualEffect}"
+                    Opacity="{TemplateBinding dvc:LegendItem.ActualOpacity}">
+              <Border x:Name="FocusBorder" BorderBrush="Transparent" BorderThickness="1" CornerRadius="2"
+                      Padding="2,0,2,0">
+                <StackPanel Orientation="Horizontal">
+                  <Grid VerticalAlignment="Center">
+                    <dvc:LegendSymbol x:Name="Symbol" Fill="{TemplateBinding dvc:LegendItem.Fill}"
+                                      SymbolWidth="{TemplateBinding dvc:LegendItem.SymbolWidth}"
+                                      SymbolHeight="{TemplateBinding dvc:LegendItem.SymbolHeight}"
+                                      SymbolBorderBrush="{TemplateBinding dvc:LegendItem.SymbolBorderBrush}"
+                                      SymbolBorderThickness="{TemplateBinding dvc:LegendItem.SymbolBorderThickness}"
+                                      Stroke="{TemplateBinding dvc:LegendItem.Stroke}"
+                                      StrokeThickness="{TemplateBinding dvc:LegendItem.StrokeThickness}"
+                                      Marker="{TemplateBinding dvc:LegendItem.Marker}"
+                                      MarkerSize="{TemplateBinding dvc:LegendItem.MarkerSize}"
+                                      MarkerFill="{TemplateBinding dvc:LegendItem.MarkerFill}"
+                                      MarkerStroke="{TemplateBinding dvc:LegendItem.MarkerStroke}"
+                                      MarkerStrokeThickness="{TemplateBinding dvc:LegendItem.MarkerStrokeThickness}"/>
+                    <ContentControl Content="{TemplateBinding dvc:LegendItem.SymbolContent}" IsTabStop="false"/>
+                  </Grid>
+                  <TextBlock x:Name="Title" VerticalAlignment="Center" Text="{TemplateBinding dvc:LegendItem.Label}"/>
+                  <ItemsPresenter x:Name="Items"/>
+                </StackPanel>
+              </Border>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>sulerzh</authors>
+    <owners>sulerzh</owners>
+    <projectUrl>http://none/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>reporting chart common function.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>reporting chart common</tags>
+  </metadata>
+</package>

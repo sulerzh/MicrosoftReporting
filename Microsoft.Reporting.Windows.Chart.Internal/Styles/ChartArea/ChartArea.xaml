@@ -1,0 +1,274 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dv="clr-namespace:Microsoft.Reporting.Windows.Chart.Internal"
+                    xmlns:dvc="clr-namespace:Microsoft.Reporting.Windows.Common.Internal;assembly=Microsoft.Reporting.Windows.Common.Internal">
+  <Style x:Key="ChartAreaStyle" TargetType="{x:Type dv:ChartArea}">
+    <Setter Property="UIElement.IsEnabled" Value="true"/>
+    <Setter Property="Control.IsTabStop" Value="true"/>
+    <Setter Property="FrameworkElement.Cursor" Value="Arrow"/>
+    <Setter Property="Control.BorderBrush" Value="Black"/>
+    <Setter Property="Control.BorderThickness" Value="1"/>
+    <Setter Property="Control.Padding" Value="14"/>
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type dv:ChartArea}">
+          <Grid x:Name="LayoutRoot">
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="MouseOver"/>
+                <VisualState x:Name="Disabled"/>
+              </VisualStateGroup>
+              <VisualStateGroup x:Name="FocusStates">
+                <VisualState x:Name="Focused">
+                  <Storyboard>
+                    <ColorAnimation Duration="0" To="#20000000" Storyboard.TargetName="FocusBorder"
+                                    Storyboard.TargetProperty="(BorderBrush).(SolidBrush.Color)"/>
+                  </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Unfocused"/>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border Background="{TemplateBinding Control.Background}"
+                    BorderBrush="{TemplateBinding Control.BorderBrush}"
+                    BorderThickness="{TemplateBinding Control.BorderThickness}" CornerRadius="10"
+                    Padding="{TemplateBinding Control.Padding}">
+              <Border x:Name="FocusBorder" BorderBrush="Transparent" BorderThickness="1" CornerRadius="2">
+                <dv:EdgePanel x:Name="ChartAreaCanvas"/>
+              </Border>
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="dv:ChartArea.PlotAreaStyle">
+      <Setter.Value>
+        <Style TargetType="{x:Type Grid}">
+          <Setter Property="Panel.Background" Value="#01FFFFFF"/>
+          <Setter Property="FrameworkElement.Margin" Value="4,2,4,2"/>
+        </Style>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="dv:ChartArea.Palette">
+      <Setter.Value>
+        <dvc:ResourceDictionaryCollection>
+          <ResourceDictionary>
+            <Style x:Key="DataPointStyle" TargetType="{x:Type dv:DataPoint}">
+              <Setter Property="dv:DataPoint.Fill" Value="Blue"/>
+            </Style>
+            <Style x:Key="PointDataPointStyle" TargetType="{x:Type dv:PointDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+            </Style>
+            <Style x:Key="SeriesStyle" TargetType="{x:Type dv:Series}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource DataPointStyle}"/>
+            </Style>
+            <Style x:Key="PointSeriesStyle" TargetType="{x:Type dv:PointSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource PointDataPointStyle}"/>
+            </Style>
+            <Style x:Key="LineMarkerStyle" TargetType="{x:Type dvc:MarkerControl}">
+              <Setter Property="Control.Background" Value="White"/>
+              <Setter Property="dvc:MarkerControl.Stroke" Value="Blue"/>
+            </Style>
+            <Style x:Key="LineDataPointStyle" TargetType="{x:Type dv:LineDataPoint}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="2"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Blue"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+              <Setter Property="dv:DataPoint.MarkerSize" Value="8"/>
+              <Setter Property="dv:DataPoint.MarkerStyle" Value="{StaticResource LineMarkerStyle}"/>
+            </Style>
+            <Style x:Key="LineSeriesStyle" TargetType="{x:Type dv:LineSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource LineDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="BubbleDataPointStyle" TargetType="{x:Type dv:BubbleDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="1"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Black"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+              <Setter Property="UIElement.Effect">
+                <Setter.Value>
+                  <DropShadowEffect ShadowDepth="1" BlurRadius="3"/>
+                </Setter.Value>
+              </Setter>
+            </Style>
+                        <Style x:Key="BubbleSeriesStyle" TargetType="{x:Type dv:BubbleSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource BubbleDataPointStyle}"/>
+            </Style>
+          </ResourceDictionary>
+          <ResourceDictionary>
+                        <Style x:Key="DataPointStyle" TargetType="{x:Type dv:DataPoint}">
+              <Setter Property="dv:DataPoint.Fill" Value="Fuchsia"/>
+            </Style>
+                        <Style x:Key="PointDataPointStyle" TargetType="{x:Type dv:PointDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.MarkerType" Value="Square"/>
+            </Style>
+                        <Style x:Key="SeriesStyle" TargetType="{x:Type dv:Series}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource DataPointStyle}"/>
+            </Style>
+                        <Style x:Key="PointSeriesStyle" TargetType="{x:Type dv:PointSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource PointDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="LineMarkerStyle" TargetType="{x:Type dvc:MarkerControl}">
+              <Setter Property="Control.Background" Value="White"/>
+              <Setter Property="dvc:MarkerControl.Stroke" Value="Fuchsia"/>
+            </Style>
+                        <Style x:Key="LineDataPointStyle" TargetType="{x:Type dv:LineDataPoint}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="2"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Fuchsia"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Square"/>
+              <Setter Property="dv:DataPoint.MarkerSize" Value="7"/>
+              <Setter Property="dv:DataPoint.MarkerStyle" Value="{StaticResource LineMarkerStyle}"/>
+            </Style>
+                        <Style x:Key="LineSeriesStyle" TargetType="{x:Type dv:LineSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource LineDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="BubbleDataPointStyle" TargetType="{x:Type dv:BubbleDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="1"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Black"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+              <Setter Property="UIElement.Effect">
+                <Setter.Value>
+                  <DropShadowEffect ShadowDepth="1" BlurRadius="3"/>
+                </Setter.Value>
+              </Setter>
+            </Style>
+                        <Style x:Key="BubbleSeriesStyle" TargetType="{x:Type dv:BubbleSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource BubbleDataPointStyle}"/>
+            </Style>
+          </ResourceDictionary>
+          <ResourceDictionary>
+                        <Style x:Key="DataPointStyle" TargetType="{x:Type dv:DataPoint}">
+              <Setter Property="dv:DataPoint.Fill" Value="Orange"/>
+            </Style>
+                        <Style x:Key="PointDataPointStyle" TargetType="{x:Type dv:PointDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.MarkerType" Value="Triangle"/>
+            </Style>
+                        <Style x:Key="SeriesStyle" TargetType="{x:Type dv:Series}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource DataPointStyle}"/>
+            </Style>
+                        <Style x:Key="PointSeriesStyle" TargetType="{x:Type dv:PointSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource PointDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="LineMarkerStyle" TargetType="{x:Type dvc:MarkerControl}">
+              <Setter Property="Control.Background" Value="White"/>
+              <Setter Property="dvc:MarkerControl.Stroke" Value="Orange"/>
+            </Style>
+                        <Style x:Key="LineDataPointStyle" TargetType="{x:Type dv:LineDataPoint}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="2"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Orange"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Diamond"/>
+              <Setter Property="dv:DataPoint.MarkerSize" Value="8"/>
+              <Setter Property="dv:DataPoint.MarkerStyle" Value="{StaticResource LineMarkerStyle}"/>
+            </Style>
+                        <Style x:Key="LineSeriesStyle" TargetType="{x:Type dv:LineSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource LineDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="BubbleDataPointStyle" TargetType="{x:Type dv:BubbleDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="1"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Black"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+              <Setter Property="UIElement.Effect">
+                <Setter.Value>
+                  <DropShadowEffect ShadowDepth="1" BlurRadius="3"/>
+                </Setter.Value>
+              </Setter>
+            </Style>
+                        <Style x:Key="BubbleSeriesStyle" TargetType="{x:Type dv:BubbleSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource BubbleDataPointStyle}"/>
+            </Style>
+          </ResourceDictionary>
+          <ResourceDictionary>
+                        <Style x:Key="DataPointStyle" TargetType="{x:Type dv:DataPoint}">
+              <Setter Property="dv:DataPoint.Fill" Value="Purple"/>
+            </Style>
+                        <Style x:Key="PointDataPointStyle" TargetType="{x:Type dv:PointDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.MarkerType" Value="Diamond"/>
+            </Style>
+                        <Style x:Key="SeriesStyle" TargetType="{x:Type dv:Series}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource DataPointStyle}"/>
+            </Style>
+                        <Style x:Key="PointSeriesStyle" TargetType="{x:Type dv:PointSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource PointDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="LineMarkerStyle" TargetType="{x:Type dvc:MarkerControl}">
+              <Setter Property="Control.Background" Value="White"/>
+              <Setter Property="dvc:MarkerControl.Stroke" Value="Purple"/>
+            </Style>
+                        <Style x:Key="LineDataPointStyle" TargetType="{x:Type dv:LineDataPoint}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="2"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Purple"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Triangle"/>
+              <Setter Property="dv:DataPoint.MarkerSize" Value="8"/>
+              <Setter Property="dv:DataPoint.MarkerStyle" Value="{StaticResource LineMarkerStyle}"/>
+            </Style>
+                        <Style x:Key="LineSeriesStyle" TargetType="{x:Type dv:LineSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource LineDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="BubbleDataPointStyle" TargetType="{x:Type dv:BubbleDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="1"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Black"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+              <Setter Property="UIElement.Effect">
+                <Setter.Value>
+                  <DropShadowEffect ShadowDepth="1" BlurRadius="3"/>
+                </Setter.Value>
+              </Setter>
+            </Style>
+                        <Style x:Key="BubbleSeriesStyle" TargetType="{x:Type dv:BubbleSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource BubbleDataPointStyle}"/>
+            </Style>
+          </ResourceDictionary>
+          <ResourceDictionary>
+                        <Style x:Key="DataPointStyle" TargetType="{x:Type dv:DataPoint}">
+              <Setter Property="dv:DataPoint.Fill" Value="Red"/>
+            </Style>
+                        <Style x:Key="PointDataPointStyle" TargetType="{x:Type dv:PointDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.MarkerType" Value="Star4"/>
+            </Style>
+                        <Style x:Key="SeriesStyle" TargetType="{x:Type dv:Series}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource DataPointStyle}"/>
+            </Style>
+                        <Style x:Key="PointSeriesStyle" TargetType="{x:Type dv:PointSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource PointDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="LineMarkerStyle" TargetType="{x:Type dvc:MarkerControl}">
+              <Setter Property="Control.Background" Value="White"/>
+              <Setter Property="dvc:MarkerControl.Stroke" Value="Red"/>
+            </Style>
+                        <Style x:Key="LineDataPointStyle" TargetType="{x:Type dv:LineDataPoint}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="2"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Red"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Star4"/>
+              <Setter Property="dv:DataPoint.MarkerSize" Value="12"/>
+              <Setter Property="dv:DataPoint.MarkerStyle" Value="{StaticResource LineMarkerStyle}"/>
+            </Style>
+                        <Style x:Key="LineSeriesStyle" TargetType="{x:Type dv:LineSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource LineDataPointStyle}"/>
+            </Style>
+                        <Style x:Key="BubbleDataPointStyle" TargetType="{x:Type dv:BubbleDataPoint}"
+                   BasedOn="{StaticResource DataPointStyle}">
+              <Setter Property="dv:DataPoint.StrokeThickness" Value="1"/>
+              <Setter Property="dv:DataPoint.Stroke" Value="Black"/>
+              <Setter Property="dv:DataPoint.MarkerType" Value="Circle"/>
+              <Setter Property="UIElement.Effect">
+                <Setter.Value>
+                  <DropShadowEffect ShadowDepth="1" BlurRadius="3"/>
+                </Setter.Value>
+              </Setter>
+            </Style>
+                        <Style x:Key="BubbleSeriesStyle" TargetType="{x:Type dv:BubbleSeries}">
+              <Setter Property="dv:Series.DataPointStyle" Value="{StaticResource BubbleDataPointStyle}"/>
+            </Style>
+          </ResourceDictionary>
+        </dvc:ResourceDictionaryCollection>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

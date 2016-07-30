@@ -1,0 +1,15 @@
+// at root
+
+cd Microsoft.Reporting.Common.Toolkit.Internal
+nuget pack Microsoft.Reporting.Common.Toolkit.Internal.csproj -Prop Configuration=Release
+nuget push Microsoft.Reporting.Common.Toolkit.Internal.1.0.0.0.nupkg
+
+cd ..
+cd Microsoft.Reporting.Windows.Common.Internal
+nuget pack Microsoft.Reporting.Windows.Common.Internal.csproj -IncludeReferencedProjects -Prop Configuration=Release
+nuget push Microsoft.Reporting.Windows.Common.Internal.1.0.0.0.nupkg
+
+cd ..
+cd Microsoft.Reporting.Windows.Chart.Internal
+nuget pack Microsoft.Reporting.Windows.Chart.Internal.csproj -IncludeReferencedProjects -Prop Configuration=Release
+nuget push Microsoft.Reporting.Windows.Chart.Internal.1.0.0.0.nupkg
