@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Reporting.Windows.Chart.Internal</RootNamespace>
-    <AssemblyName>Microsoft.Reporting.Windows.Chart.Internal</AssemblyName>
+    <AssemblyName>Semantic.Chart</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -196,12 +196,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="chart.nuspec" />
+    <None Include="Chart.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.Reporting.Windows.Common.Internal\Microsoft.Reporting.Windows.Common.Internal.csproj">
+    <ProjectReference Include="..\Semantic.ChartCommon\Semantic.ChartCommon.csproj">
       <Project>{3a06d672-1e54-470c-ba5a-7172e797bae8}</Project>
-      <Name>Microsoft.Reporting.Windows.Common.Internal</Name>
+      <Name>Semantic.ChartCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
