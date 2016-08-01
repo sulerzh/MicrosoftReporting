@@ -77,7 +77,7 @@ namespace Microsoft.Reporting.Windows.Common.Internal
         {
             this.PixelShader = new PixelShader()
             {
-                UriSource = new Uri("/Microsoft.Reporting.Windows.Common.Internal;component/PixelShaderEffects/Gloom.ps", UriKind.Relative)
+                UriSource = new Uri("/Semantic.ChartCommon;component/PixelShaderEffects/Gloom.ps", UriKind.Relative)
             };
             this.UpdateShaderValue(GloomEffect.InputProperty);
             this.UpdateShaderValue(GloomEffect.GloomIntensityProperty);
